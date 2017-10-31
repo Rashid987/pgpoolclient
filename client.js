@@ -1,12 +1,13 @@
 require("console-stamp")(console, {pattern: "dd/mm/yyyy HH:MM:ss.l"});
 var pg = require("pg");
 var conString1 ;
+var db = {};
 exports.client=function(conString){
 conString1 = "pg://"+conString;
 connect();
 }
 var queryArr = [];
-var db = {};
+
 var client;
 var state = 'NoConnection';
 var connect = function () {
@@ -16,7 +17,7 @@ var connect = function () {
         return false;
     }
     state = 'Connecting';
-    client = new pg.Client(conString);
+    client = new pg.Client(conString1);
     console.log('--------- connecting to postgres ---------');
     
     client.connect();
@@ -27,7 +28,7 @@ var connect = function () {
         state = 'Connected';
         queryArr.forEach(function(query) {
             console.log(query.query);
-            db.query(query.query, query.params, query.callback);
+            exports.query(query.query, query.params, query.callback);
         });
         queryArr = [];
     });
@@ -45,10 +46,11 @@ var connect = function () {
 };
 
 exports.query = function (query, params, callback) {
-    
+        if(callback==undefined)
+        	callback=params;
     if (!connect()) {
         queryArr.push({query:query, params:params, callback:callback});
-        return;
+         return;
     }
     try {
         client.query(query, params, function (err, res) {
@@ -72,3 +74,4 @@ exports.query = function (query, params, callback) {
         console.log(' ----- ERROR: in postgresQuery ----', e);
     }
 };
+// module.exports = db;
