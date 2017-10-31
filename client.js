@@ -2,7 +2,7 @@ require("console-stamp")(console, {pattern: "dd/mm/yyyy HH:MM:ss.l"});
 var pg = require("pg");
 var conString1 ;
 exports.client=function(conString){
-conString1 = conString;
+conString1 = "pg://"+conString;
 connect();
 }
 var queryArr = [];

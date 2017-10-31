@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rashid987/pgpoolclient#readme",
   "devDependencies": {
+    "console-stamp": "^0.2.6",
     "pg": "^7.3.0"
   }
 }
