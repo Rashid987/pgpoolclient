@@ -1,0 +1,22 @@
+{
+  "name": "pgpoolclient",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rashid987/pgpoolclient.git"
+  },
+  "author": "securifi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rashid987/pgpoolclient/issues"
+  },
+  "homepage": "https://github.com/Rashid987/pgpoolclient#readme",
+  "devDependencies": {
+    "pg": "^7.3.0"
+  }
+}
